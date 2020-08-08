@@ -11,7 +11,7 @@ func main() {
 	    router.Static("/assets", "./assets")
 
     router.GET("/", func(ctx *gin.Context){
-            ctx.HTML(http.StatusOK, "index.html", gin.H{})
+            ctx.HTML(http.StatusOK, "dashboard.html", gin.H{})
 	        })
 
     router.Run(":8080")
