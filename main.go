@@ -10,11 +10,31 @@ func main() {
         router.LoadHTMLGlob("views/*.html")
 	    router.Static("/assets", "./assets")
 
-    router.GET("/", func(ctx *gin.Context){
+    router.GET("/dashbord", func(ctx *gin.Context){
         ctx.HTML(http.StatusOK, "dashboard.html", gin.H{})
     })
     
-    router.GET("/user.html", func(ctx *gin.Context){
+    router.GET("/icons", func(ctx *gin.Context){
+        ctx.HTML(http.StatusOK, "icons.html", gin.H{})
+    })
+
+    router.GET("/map", func(ctx *gin.Context){
+        ctx.HTML(http.StatusOK, "map.html", gin.H{})
+    })
+
+    router.GET("/notifications", func(ctx *gin.Context){
+        ctx.HTML(http.StatusOK, "notifications.html", gin.H{})
+    })
+
+    router.GET("/tables", func(ctx *gin.Context){
+        ctx.HTML(http.StatusOK, "tables.html", gin.H{})
+    })
+
+    router.GET("/upgrade", func(ctx *gin.Context){
+        ctx.HTML(http.StatusOK, "upgrade.html", gin.H{})
+    })
+
+    router.GET("/user", func(ctx *gin.Context){
         ctx.HTML(http.StatusOK, "user.html", gin.H{})
     })
 
