@@ -14,7 +14,7 @@ func main() {
         ctx.HTML(http.StatusOK, "dashboard.html", gin.H{})
     })
     
-    router.GET("/dashboard.html", func(ctx *gin.Context){
+    router.POST("/dashboard.html", func(ctx *gin.Context){
         ctx.HTML(http.StatusOK, "dashboard.html", gin.H{})
     })
 
