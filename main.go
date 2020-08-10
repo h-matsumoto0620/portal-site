@@ -10,7 +10,7 @@ func main() {
         router.LoadHTMLGlob("views/*.html")
 	    router.Static("/assets", "./assets")
 
-    router.GET("/dashbord", func(ctx *gin.Context){
+    router.GET("/dashboard", func(ctx *gin.Context){
         ctx.HTML(http.StatusOK, "dashboard.html", gin.H{})
     })
     
