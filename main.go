@@ -43,5 +43,9 @@ func main() {
 		ctx.HTML(http.StatusOK, "sidebar.html", gin.H{})
 	})
 
+	router.GET("/typography", func(ctx *gin.Context) {
+		ctx.HTML(http.StatusOK, "typography.html", gin.H{})
+	})
+
 	router.Run(":8080")
 }
