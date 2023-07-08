@@ -18026,7 +18026,7 @@ html[dir="rtl"] .form-check .form-check-sign .check:before {
 
 .card-stats .card-header.card-header-icon,
 .card-stats .card-header.card-header-text {
-  text-align: right;
+  text-align: left;
 }
 
 .card-stats .card-header .card-icon+.card-title,

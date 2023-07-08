@@ -1,0 +1,16 @@
+<div class="input">
+  <p>{{.err}}</p>
+  <form action="/register" method="post">
+    <p>案件名 :<input type="text" name="projectName" placeholder=""/></p>
+    <p>開始年月 :<input type="month" name="projectStart" placeholder=""/></p>
+    <p>終了年月 :<input type="month" name="projectEnd" placeholder=""/></p>
+    <p>業務内容 :<input type="text" name="content" placeholder=""/></p>
+    <p>使用言語 :<input type="text" name="programLang" placeholder=""/></p>
+    <p>OS :<input type="text" name="os" placeholder=""/></p>
+    <p>環境他 :<input type="text" name="env" placeholder=""/></p>
+    <p>担当業務 :<input type="text" name="workInCharge" placeholder=""/></p>
+    <p>職種 :<input type="text" name="occupation" placeholder=""/></p>
+    <p>補足説明 :<textarea name="memo" rows="4" cols="40" ></textarea></p>
+    <p><input type="submit" value="登録" /></p>
+  </form>
+</div>
