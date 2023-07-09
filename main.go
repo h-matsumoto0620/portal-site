@@ -98,8 +98,6 @@ func sessionCheck() gin.HandlerFunc {
 		session := sessions.Default(ctx)
 		userId := session.Get("UserID")
 
-		fmt.Println(userId)
-
 		//　セッションがない場合、ログインフォームに移動
 		if userId == nil {
 			fmt.Println("ログインされていません")
@@ -125,6 +123,18 @@ func createProject(ctx *gin.Context, project Project) []error {
 		return err
 	}
 	return nil
+}
+
+// 案件情報取得
+func getProjectData(ctx *gin.Context) []Project {
+	session := sessions.Default(ctx)
+	userId := session.Get("UserID")
+
+	db := gormConnect()
+	var projectList []Project
+	db.Find(&projectList, "user_id = ?", userId)
+
+	return projectList
 }
 
 func main() {
@@ -192,7 +202,8 @@ func main() {
 	dashboard.Use(sessionCheck())
 	{
 		dashboard.GET("", func(ctx *gin.Context) {
-			ctx.HTML(http.StatusOK, "dashboard.html", gin.H{})
+			projectData := getProjectData(ctx)
+			ctx.HTML(http.StatusOK, "dashboard.html", gin.H{"projectData": projectData})
 		})
 	}
 
