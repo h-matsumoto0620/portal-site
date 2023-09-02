@@ -153,7 +153,6 @@ func main() {
 	router.GET("/signup", func(ctx *gin.Context) {
 		ctx.HTML(http.StatusOK, "signup.html", gin.H{})
 	})
-
 	// ユーザー登録
 	router.POST("/signup", func(ctx *gin.Context) {
 		var form User
@@ -176,7 +175,6 @@ func main() {
 	router.GET("/login", func(ctx *gin.Context) {
 		ctx.HTML(http.StatusOK, "login.html", gin.H{})
 	})
-
 	// ユーザーログイン
 	router.POST("/login", func(ctx *gin.Context) {
 
@@ -198,6 +196,7 @@ func main() {
 		}
 	})
 
+	// ダッシュボード画面
 	dashboard := router.Group("/dashboard")
 	dashboard.Use(sessionCheck())
 	{
@@ -207,6 +206,7 @@ func main() {
 		})
 	}
 
+	//　プロジェクト登録画面
 	register := router.Group("/register")
 	register.Use(sessionCheck())
 	{
@@ -226,10 +226,6 @@ func main() {
 			}
 		})
 	}
-
-	// router.GET("/icons", func(ctx *gin.Context) {
-	// 	ctx.HTML(http.StatusOK, "icons.html", gin.H{})
-	// })
 
 	router.Run(":8080")
 }
