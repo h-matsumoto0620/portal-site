@@ -16,6 +16,7 @@
 <body class="">
   <hgroup>
     <h1>ポートフォリオサイト</h1>
+    <h3>ログイン</h3>
   </hgroup>
   <form action="/login" method="post">
     <p>{{.err}}</p>
@@ -28,6 +29,9 @@
       <label>password</label>
     </div>
     <button type="submit" class="button buttonBlue">login
+      <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+    </button>
+    <button type="button" class="button buttonGreen signupButton">sign up
       <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
     </button>
   </form>
@@ -70,6 +74,10 @@
 
       $ripples.on('animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd', function(e) {
           $(this).removeClass('is-active');
+      });
+
+      $('.signupButton').on('click', function(){
+        window.location.href = '/signup';
       });
 
     });

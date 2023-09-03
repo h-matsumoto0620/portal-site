@@ -160,6 +160,13 @@ input:focus ~ .highlight {
 
 .buttonBlue:hover { background: #357bd8; }
 
+.buttonGreen {
+  background: #4adc89;
+  text-shadow: 1px 1px 0 rgba(39, 204, 102, 0.5);
+}
+
+.buttonGreen:hover { background: #38d835; }
+
 
 /* Ripples container */
 
