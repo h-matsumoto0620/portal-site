@@ -1,6 +1,6 @@
+{{define "projectRegister"}}
 <div class="input">
-  <p>{{.err}}</p>
-  <form action="/register" method="post">
+  <form action="/register" method="post" class="projectRegisterForm">
     <p>案件名 :<input type="text" name="projectName" placeholder=""/></p>
     <p>開始年月 :<input type="month" name="projectStart" placeholder=""/></p>
     <p>終了年月 :<input type="month" name="projectEnd" placeholder=""/></p>
@@ -11,6 +11,7 @@
     <p>担当業務 :<input type="text" name="workInCharge" placeholder=""/></p>
     <p>職種 :<input type="text" name="occupation" placeholder=""/></p>
     <p>補足説明 :<textarea name="memo" rows="4" cols="40" ></textarea></p>
-    <p><input type="submit" value="登録" /></p>
+    <p><input type="button" class="projectRegisterBtn" value="登録" /></p>
   </form>
 </div>
+{{end}}

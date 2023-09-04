@@ -23,16 +23,16 @@ type User struct {
 type Project struct {
 	gorm.Model
 	UserId       uint
-	ProjectName  string `form:"projectName" binding:"required"`
-	ProjectStart string `form:"projectStart" binding:"required"`
-	ProjectEnd   string `form:"projectEnd" binding:"required"`
-	Content      string `form:"content"`
-	ProgramLang  string `form:"programLang" gorm:"type:text"`
-	OS           string `form:"os"`
-	Env          string `form:"env" gorm:"type:text"`
-	WorkInCharge string `form:"workInCharge"`
-	Occupation   string `form:"occupation"`
-	Memo         string `form:"memo" gorm:"type:text"`
+	ProjectName  string `json:"projectName" binding:"required"`
+	ProjectStart string `json:"projectStart" binding:"required"`
+	ProjectEnd   string `json:"projectEnd" binding:"required"`
+	Content      string `json:"content"`
+	ProgramLang  string `json:"programLang" gorm:"type:text"`
+	OS           string `json:"os"`
+	Env          string `json:"env" gorm:"type:text"`
+	WorkInCharge string `json:"workInCharge"`
+	Occupation   string `json:"occupation"`
+	Memo         string `json:"memo" gorm:"type:text"`
 }
 
 func gormConnect() *gorm.DB {
@@ -206,26 +206,19 @@ func main() {
 		})
 	}
 
-	//　プロジェクト登録画面
-	register := router.Group("/register")
-	register.Use(sessionCheck())
-	{
-		register.GET("", func(ctx *gin.Context) {
-			ctx.HTML(http.StatusOK, "projectRegister.html", gin.H{})
-		})
-		register.POST("", func(ctx *gin.Context) {
-			var pro Project
-			if err := ctx.Bind(&pro); err != nil {
-				ctx.HTML(http.StatusBadRequest, "projectRegister.html", gin.H{"err": err})
-				ctx.Abort()
-			} else {
-				if err := createProject(ctx, pro); len(err) != 0 {
-					ctx.HTML(http.StatusBadRequest, "projectRegister.html", gin.H{"err": err})
-				}
-				ctx.Redirect(302, "/dashboard")
+	//　プロジェクト登録
+	router.POST("/register", func(ctx *gin.Context) {
+		var pro Project
+		if err := ctx.Bind(&pro); err != nil {
+			ctx.JSON(http.StatusBadRequest, gin.H{"regiErr": err})
+			ctx.Abort()
+		} else {
+			if err := createProject(ctx, pro); len(err) != 0 {
+				ctx.JSON(http.StatusBadRequest, gin.H{"regiErr": err})
 			}
-		})
-	}
+			ctx.JSON(http.StatusOK, "成功")
+		}
+	})
 
 	router.Run(":8080")
 }

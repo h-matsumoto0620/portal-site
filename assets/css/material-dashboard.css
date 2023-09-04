@@ -17716,9 +17716,9 @@ html[dir="rtl"] .form-check .form-check-sign .check:before {
   margin: 8px 0 0;
 }
 
-.card .card-header {
-  z-index: 3 !important;
-}
+/* .card .card-header {
+  z-index: 1 !important;
+} */
 
 .card .card-header .card-title {
   margin-bottom: 3px;
