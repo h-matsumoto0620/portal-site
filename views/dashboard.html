@@ -63,7 +63,7 @@ The above copyright notice and this permission notice shall be included in all c
                   <a class="dropdown-item" href="#">Profile</a>
                   <a class="dropdown-item" href="#">Settings</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Log out</a>
+                  <a class="dropdown-item" href="/logout">Log out</a>
                 </div>
               </li>
             </ul>
@@ -87,10 +87,22 @@ The above copyright notice and this permission notice shall be included in all c
                     <h3 class="card-title">{{ .ProjectName }}</h3>
                   </div>
                   <div class="card-body">
-                    <p class="card-title">参画年月</p>
-                    <p class="card-text">test</p>
-                    <p class="card-title">参画年月</p>
-                    <p class="card-text">test</p>
+                    <p class="card-title">参画期間</p>
+                    <p class="card-text">{{.ProjectStart}} 〜 {{.ProjectEnd}}</p>
+                    <p class="card-title">業務内容</p>
+                    <p class="card-text">{{.Content}}</p>
+                    <p class="card-title">使用言語</p>
+                    <p class="card-text">{{.ProgramLang}}</p>
+                    <p class="card-title">OS</p>
+                    <p class="card-text">{{.OS}}</p>
+                    <p class="card-title">開発環境等</p>
+                    <p class="card-text">{{.Env}}</p>
+                    <p class="card-title">担当業務</p>
+                    <p class="card-text">{{.WorkInCharge}}</p>
+                    <p class="card-title">職種</p>
+                    <p class="card-text">{{.Occupation}}</p>
+                    <p class="card-title">補足説明</p>
+                    <p class="card-text">{{.Memo}}</p>
                   </div>
                 </div>
               </div>

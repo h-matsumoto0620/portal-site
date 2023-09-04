@@ -92,6 +92,13 @@ func setLoginSessions(ctx *gin.Context, UserData User) {
 	session.Save()
 }
 
+// ログインセッション削除
+func delLoginSessions(ctx *gin.Context) {
+	session := sessions.Default(ctx)
+	session.Clear()
+	session.Save()
+}
+
 // ログインセッション確認
 func sessionCheck() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
@@ -194,6 +201,12 @@ func main() {
 			setLoginSessions(ctx, userData)
 			ctx.Redirect(302, "/dashboard")
 		}
+	})
+
+	//　ユーザーログアウト
+	router.GET("/logout", func(ctx *gin.Context) {
+		delLoginSessions(ctx)
+		ctx.Redirect(302, "/login")
 	})
 
 	// ダッシュボード画面
